@@ -14,7 +14,7 @@ const UpdateUser = () => {
     const newUser = { name, email, male, female, active, inactive };
     console.log(newUser);
 
-    fetch(`http://localhost:5000/users/${_id}`, {
+    fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import AllUsers from "./components/AllUsers";
-import { useState } from "react";
 
 const App = () => {
   const LoadedUser = useLoaderData();
+  console.log(LoadedUser);
   const [user, setUser] = useState(LoadedUser);
 
   return (

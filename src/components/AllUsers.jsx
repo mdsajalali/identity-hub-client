@@ -5,7 +5,7 @@ const AllUsers = ({ item, user, setUser }) => {
   const { _id, name, email } = item;
 
   const userDelete = (_id) => {
-    fetch(`http://localhost:5000/users/${_id}`, {
+    fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

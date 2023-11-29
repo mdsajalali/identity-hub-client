@@ -12,7 +12,7 @@ const NewUser = () => {
     const newUser = { name, email, male, female, active, inactive };
     console.log(newUser);
 
-    fetch("http://localhost:5000/users", {
+    fetch("https://identityhub-api.onrender.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
