@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import AllUsers from "./components/AllUsers";
 import { useState } from "react";
 
@@ -13,6 +13,9 @@ const App = () => {
           User Management System
         </h1>
       </header>
+      <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
+        <Link to="/newUser">NEW USER</Link>
+      </div>
       {user.map((item) => (
         <table key={item._id} className="w-1/2 mx-auto mt-10">
           <tr className="border">
