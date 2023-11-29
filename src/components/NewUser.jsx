@@ -10,8 +10,22 @@ const NewUser = () => {
     const active = e.target.active.value;
     const inactive = e.target.inactive.value;
     const newUser = { name, email, male, female, active, inactive };
-    console.log(newUser); 
-    
+    console.log(newUser);
+
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("User added successfully");
+        }
+      });
   };
   return (
     <>
