@@ -1,18 +1,30 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const NewUser = () => {
+   const [gender, setGender] = useState("");
+   const [status, setStatus] = useState("");
+
+   const handleGenderChange = (e) => {
+     setGender(e.target.value);
+   };
+
+   const handleStatusChange = (e) => {
+     setStatus(e.target.value);
+   };
+
   const handleCreateUser = (e) => {
     e.preventDefault();
+     
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const male = e.target.male.value;
-    const female = e.target.female.value;
-    const active = e.target.active.value;
-    const inactive = e.target.inactive.value;
-    const newUser = { name, email, male, female, active, inactive };
+
+    const newUser = { name, email, gender, status };
     console.log(newUser);
 
-    fetch("https://identityhub-api.onrender.com/", {
+
+
+    fetch("https://identityhub-api.onrender.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,13 +72,30 @@ const NewUser = () => {
               name="email"
             />
           </div>
+
           <div className="text-[20px] my-3">
             <label htmlFor="gender">Gender</label>
-            <input className="ml-4" type="radio" name="male" id="male" />
+            <input
+              className="ml-4"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              checked={gender === "male"}
+              onChange={handleGenderChange}
+            />
             <label htmlFor="male" className="ml-2">
               Male
             </label>
-            <input className="ml-7" type="radio" name="female" id="female" />
+            <input
+              className="ml-7"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+              checked={gender === "female"}
+              onChange={handleGenderChange}
+            />
             <label htmlFor="female" className="ml-3">
               Female
             </label>
@@ -75,15 +104,26 @@ const NewUser = () => {
             <label htmlFor="status" className="mr-3">
               Status
             </label>
-            <input className="ml-4" type="radio" name="active" id="active" />
+            <input
+              className="ml-4"
+              type="radio"
+              name="status"
+              id="active"
+              value="active"
+              checked={status === "active"}
+              onChange={handleStatusChange}
+            />
             <label htmlFor="active" className="ml-2">
               Active
             </label>
             <input
               className="ml-4"
               type="radio"
-              name="inactive"
+              name="status"
               id="inactive"
+              value="inactive"
+              checked={status === "inactive"}
+              onChange={handleStatusChange}
             />
             <label htmlFor="inactive" className="ml-2">
               Inactive

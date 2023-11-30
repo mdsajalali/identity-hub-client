@@ -1,8 +1,9 @@
 import { FaPen } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
-const AllUsers = ({ item, user, setUser }) => {
-  const { _id, name, email } = item;
+const AllUsers = ({ item, idx, user, setUser }) => {
+  const { _id, name, email, gender, status } = item;
+  console.log(item);
 
   const userDelete = (_id) => {
     fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
@@ -21,11 +22,11 @@ const AllUsers = ({ item, user, setUser }) => {
 
   return (
     <>
-      <td className="border p-2">{_id}</td>
+      <td className="border p-2">{idx + 1}</td>
       <td className="border p-2">{name}</td>
       <td className="border p-2">{email}</td>
-      <td className="border p-2">Male</td>
-      <td className="border p-2">Active</td>
+      <td className="border p-2">{gender}</td>
+      <td className="border p-2">{status}</td>
       <td className="border p-2 flex gap-5">
         <Link to={`/updateUser/${_id}`}>
           <button className="text-[20px]">

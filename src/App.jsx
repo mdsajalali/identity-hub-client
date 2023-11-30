@@ -17,7 +17,7 @@ const App = () => {
       <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
         <Link to="/newUser">NEW USER</Link>
       </div>
-      {user.map((item) => (
+      {user.map((item, idx) => (
         <table key={item._id} className="w-1/2 mx-auto mt-10">
           <tr className="border">
             <th className="border p-2">ID</th>
@@ -27,8 +27,8 @@ const App = () => {
             <th className="border p-2">Status</th>
             <th className="border p-2">Action</th>
           </tr>
-          <tr>
-            <AllUsers item={item} user={user} setUser={setUser} />
+          <tr className="text-center">
+            <AllUsers item={item} idx={idx} user={user} setUser={setUser} />
           </tr>
         </table>
       ))}
