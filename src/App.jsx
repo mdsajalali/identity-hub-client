@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import AllUsers from "./components/AllUsers";
+import Header from "./components/Header";
 
 const App = () => {
   const LoadedUser = useLoaderData();
@@ -9,11 +10,7 @@ const App = () => {
 
   return (
     <div>
-      <header className="bg-[#06D6A0] p-2">
-        <h1 className="text-center text-3xl md:text-4xl">
-          User Management System
-        </h1>
-      </header>
+      <Header />
       <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
         <Link to="/newUser">NEW USER</Link>
       </div>
