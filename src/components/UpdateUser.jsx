@@ -1,17 +1,33 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const UpdateUser = () => {
   const loadedUser = useLoaderData();
-  const { _id, name, email } = loadedUser;
+  const {
+    _id,
+    name,
+    email,
+    gender: initialGender,
+    status: initialStatus,
+  } = loadedUser;
+
+  const [gender, setGender] = useState(initialGender || "");
+  const [status, setStatus] = useState(initialStatus || "");
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
+
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
+
   const handleUpdateUser = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const male = e.target.male.value;
-    const female = e.target.female.value;
-    const active = e.target.active.value;
-    const inactive = e.target.inactive.value;
-    const newUser = { name, email, male, female, active, inactive };
+
+    const newUser = { name, email, status, gender };
     console.log(newUser);
 
     fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
@@ -29,6 +45,7 @@ const UpdateUser = () => {
         }
       });
   };
+
   return (
     <>
       <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
@@ -36,8 +53,8 @@ const UpdateUser = () => {
       </div>
       <div className="w-10/12 xl:w-1/2 mx-auto mt-20 ">
         <div className="text-center my-5">
-          <h1 className="text-3xl">New User</h1>
-          <p>Use the below form to crete a new account</p>
+          <h1 className="text-3xl">Update User</h1>
+          <p>Use the below form to update the user account</p>
         </div>
         <form onSubmit={handleUpdateUser}>
           <div className="flex flex-col">
@@ -66,11 +83,27 @@ const UpdateUser = () => {
           </div>
           <div className="text-[20px] my-3">
             <label htmlFor="gender">Gender</label>
-            <input className="ml-4" type="radio" name="male" id="male" />
+            <input
+              className="ml-4"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              checked={gender === "male"}
+              onChange={handleGenderChange}
+            />
             <label htmlFor="male" className="ml-2">
               Male
             </label>
-            <input className="ml-7" type="radio" name="female" id="female" />
+            <input
+              className="ml-7"
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+              checked={gender === "female"}
+              onChange={handleGenderChange}
+            />
             <label htmlFor="female" className="ml-3">
               Female
             </label>
@@ -79,15 +112,26 @@ const UpdateUser = () => {
             <label htmlFor="status" className="mr-3">
               Status
             </label>
-            <input className="ml-4" type="radio" name="active" id="active" />
+            <input
+              className="ml-4"
+              type="radio"
+              name="status"
+              id="active"
+              value="active"
+              checked={status === "active"}
+              onChange={handleStatusChange}
+            />
             <label htmlFor="active" className="ml-2">
               Active
             </label>
             <input
               className="ml-4"
               type="radio"
-              name="inactive"
+              name="status"
               id="inactive"
+              value="inactive"
+              checked={status === "inactive"}
+              onChange={handleStatusChange}
             />
             <label htmlFor="inactive" className="ml-2">
               Inactive
