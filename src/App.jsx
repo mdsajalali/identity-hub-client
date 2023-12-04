@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import AllUsers from "./components/AllUsers";
 import Header from "./components/Header";
 
@@ -11,9 +11,6 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
-        <Link to="/newUser">NEW USER</Link>
-      </div>
       {user.map((item, idx) => (
         <table key={item._id} className="w-1/2 mx-auto mt-10">
           <tr className="border">

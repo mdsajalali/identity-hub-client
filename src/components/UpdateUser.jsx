@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import Header from "./Header";
 
 const UpdateUser = () => {
   const loadedUser = useLoaderData();
@@ -48,9 +49,7 @@ const UpdateUser = () => {
 
   return (
     <>
-      <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
-        <Link to="/">ALL USER</Link>
-      </div>
+      <Header />
       <div className="w-10/12 xl:w-1/2 mx-auto mt-20 ">
         <div className="text-center my-5">
           <h1 className="text-3xl">Update User</h1>

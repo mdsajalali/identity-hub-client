@@ -1,28 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Header from "./Header";
 
 const NewUser = () => {
-   const [gender, setGender] = useState("");
-   const [status, setStatus] = useState("");
+  const [gender, setGender] = useState("");
+  const [status, setStatus] = useState("");
 
-   const handleGenderChange = (e) => {
-     setGender(e.target.value);
-   };
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+  };
 
-   const handleStatusChange = (e) => {
-     setStatus(e.target.value);
-   };
+  const handleStatusChange = (e) => {
+    setStatus(e.target.value);
+  };
 
   const handleCreateUser = (e) => {
     e.preventDefault();
-     
+
     const name = e.target.name.value;
     const email = e.target.email.value;
 
     const newUser = { name, email, gender, status };
     console.log(newUser);
-
-
 
     fetch("https://identityhub-api.onrender.com/users", {
       method: "POST",
@@ -41,9 +39,8 @@ const NewUser = () => {
   };
   return (
     <>
-      <div className="w-10/12 xl:w-1/2 mx-auto mt-10">
-        <Link to="/">ALL USERS</Link>
-      </div>
+      <Header />
+
       <div className="w-10/12 xl:w-1/2 mx-auto mt-20 ">
         <div className="text-center my-5">
           <h1 className="text-3xl">New User</h1>
