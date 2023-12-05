@@ -137,9 +137,9 @@ const UpdateUser = () => {
             </label>
           </div>
           <input
-            className="bg-[#06D6A0] rounded-sm py-2 mt-5 font-[18px] w-full cursor-pointer hover:-tracking-tighter"
+            className="btn   w-full text-white hover:bg-[#06D6A0] bg-black uppercase"
             type="submit"
-            value="Update"
+            value="Update User"
           />
         </form>
       </div>

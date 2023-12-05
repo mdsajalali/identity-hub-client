@@ -44,7 +44,9 @@ const NewUser = () => {
       <div className="w-10/12 xl:w-1/2 mx-auto mt-20 ">
         <div className="text-center my-5">
           <h1 className="text-3xl">New User</h1>
-          <p>Use the below form to crete a new account</p>
+          <p className="mt-2 text-[18px]">
+            Use the below form to crete a new account!
+          </p>
         </div>
         <form onSubmit={handleCreateUser}>
           <div className="flex flex-col">
@@ -80,6 +82,7 @@ const NewUser = () => {
               value="male"
               checked={gender === "male"}
               onChange={handleGenderChange}
+              required
             />
             <label htmlFor="male" className="ml-2">
               Male
@@ -109,6 +112,7 @@ const NewUser = () => {
               value="active"
               checked={status === "active"}
               onChange={handleStatusChange}
+              required
             />
             <label htmlFor="active" className="ml-2">
               Active
@@ -127,9 +131,9 @@ const NewUser = () => {
             </label>
           </div>
           <input
-            className="bg-[#06D6A0] rounded-sm py-2 mt-5 font-[18px] w-full cursor-pointer hover:-tracking-tighter"
+            className="btn   w-full text-white hover:bg-[#06D6A0] bg-black uppercase"
             type="submit"
-            value="Save"
+            value="Create User"
           />
         </form>
       </div>
