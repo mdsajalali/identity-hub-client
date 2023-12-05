@@ -1,9 +1,9 @@
 import { FaPen } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
+
 const AllUsers = ({ item, idx, user, setUser }) => {
   const { _id, name, email, gender, status } = item;
-  console.log(item);
 
   const userDelete = (_id) => {
     fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
@@ -13,7 +13,7 @@ const AllUsers = ({ item, idx, user, setUser }) => {
       .then((data) => {
         console.log(data);
         if (data.deletedCount > 0) {
-          alert("User delete successfully");
+          alert("User deleted successfully");
         }
         const remaining = user.filter((user) => user._id !== _id);
         setUser(remaining);

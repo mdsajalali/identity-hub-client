@@ -22,8 +22,8 @@ const Header = () => {
   }, [theme]);
 
   return (
-    <header className="bg-[#06D6A0] p-2 flex items-center justify-around">
-      <div>
+    <header className="bg-[#06D6A0] p-2 sm:flex items-center  justify-center  sm:justify-around">
+      <div className="text-center sm:text-left">
         <h1 className=" text-2xl md:text-3xl text-white font-bold">
           <Link to="/">
             Identity <span className="bg-red-500 px-3 rounded-sm">Hub</span>
