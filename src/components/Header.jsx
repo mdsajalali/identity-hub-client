@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <header className="bg-[#06D6A0] p-2 sm:flex items-center  justify-center  sm:justify-around">
       <div className="text-center sm:text-left">
-        <h1 className=" text-2xl md:text-3xl text-white font-bold">
+        <h1 className=" text-2xl md:text-3xl uppercase   font-bold">
           <Link to="/">
             Identity <span className="bg-red-500 px-3 rounded-sm">Hub</span>
           </Link>
@@ -33,10 +33,10 @@ const Header = () => {
 
       <div className="flex items-center justify-center gap-5">
         <nav className="flex">
-          <li className="list-none mr-5">
+          <li className="list-none mr-5 font-bold">
             <NavLink to="/">HOME</NavLink>
           </li>
-          <li className="list-none">
+          <li className="list-none font-bold">
             <NavLink to="/newUser">NEW USER</NavLink>
           </li>
         </nav>
@@ -46,6 +46,7 @@ const Header = () => {
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
+              
               onClick={handleToggle}
               checked={theme === "light" ? false : true}
             />

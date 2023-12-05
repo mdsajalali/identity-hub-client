@@ -3,6 +3,5 @@
 @tailwind utilities;
 
 a.active {
-  color: black;
-  font-weight: bold;
+  color: #EF4C53;
 }

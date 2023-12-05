@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <div className="overflow-x-auto max-w-[1000px] mx-auto my-10">
+      <div className="overflow-x-auto max-w-[1000px] mx-auto my-10 px-4">
         <table className="table">
           <thead>
             <tr className="text-center text-[18px]">
@@ -20,12 +20,12 @@ const App = () => {
               <th className="border p-4">@Email</th>
               <th className="border p-4">Gender</th>
               <th className="border p-4">Status</th>
-              <th className="border p-4">Action</th>
+              <th className="border  p-4">Action</th>
             </tr>
           </thead>
           <tbody>
             {user.map((item, idx) => (
-              <tr className="text-center" key={item._id}>
+              <tr className="text-center text-[18px]" key={item._id}>
                 <AllUsers item={item} idx={idx} user={user} setUser={setUser} />
               </tr>
             ))}
