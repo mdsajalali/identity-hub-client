@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import Logo from "/favicon.png";
 
 const Header = () => {
   const localStorageValue = localStorage.getItem("theme")
@@ -22,11 +23,13 @@ const Header = () => {
   }, [theme]);
 
   return (
-    <header className="bg-[#06D6A0] p-2 sm:flex items-center  justify-center  sm:justify-around">
+    <header className="bg-[#06D6A0] p-2 flex items-center   justify-around">
       <div className="text-center sm:text-left">
         <h1 className=" text-2xl md:text-3xl uppercase   font-bold">
           <Link to="/">
-            Identity <span className="bg-red-500 px-3 rounded-sm">Hub</span>
+            <div className="w-10">
+              <img src={Logo} alt="Identity Hub" />
+            </div>
           </Link>
         </h1>
       </div>
@@ -46,7 +49,6 @@ const Header = () => {
             {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
-              
               onClick={handleToggle}
               checked={theme === "light" ? false : true}
             />
