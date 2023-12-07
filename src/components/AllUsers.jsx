@@ -58,7 +58,7 @@ const AllUsers = ({ item, idx, user, setUser }) => {
     <>
       {isLoading ? (
         <>
-          <span className="loading loading-spinner text-primary"></span>
+          <span className="loading loading-spinner text-[#06D6A0]"></span>
         </>
       ) : (
         <>
