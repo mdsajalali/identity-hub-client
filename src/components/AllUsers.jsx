@@ -1,23 +1,40 @@
 import { FaPenToSquare } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllUsers = ({ item, idx, user, setUser }) => {
   const { _id, name, email, gender, status } = item;
 
   const userDelete = (_id) => {
-    fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          alert("User deleted successfully");
-        }
-        const remaining = user.filter((user) => user._id !== _id);
-        setUser(remaining);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://identityhub-api.onrender.com/users/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "User deleted successfully",
+                icon: "success",
+              });
+              const remaining = user.filter((user) => user._id !== _id);
+              setUser(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
@@ -37,9 +54,7 @@ const AllUsers = ({ item, idx, user, setUser }) => {
           className=" bg-[#EF4C53] hover:opacity-50 transition-all text-white rounded-sm p-1"
           onClick={() => userDelete(_id)}
         >
-        
-            <MdDeleteForever size={20} />
-          
+          <MdDeleteForever size={20} />
         </button>
       </td>
     </>

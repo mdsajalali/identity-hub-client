@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Header from "./Header";
 
 const UpdateUser = () => {
+  const navigate = useNavigate();
   const loadedUser = useLoaderData();
   const {
     _id,
@@ -42,7 +44,14 @@ const UpdateUser = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          alert("User updated successfully");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "User updated successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
         }
       });
   };
@@ -137,7 +146,7 @@ const UpdateUser = () => {
             </label>
           </div>
           <input
-            className="btn   w-full text-white hover:bg-[#06D6A0] bg-black uppercase"
+            className="btn w-full text-white hover:bg-[#06D6A0] bg-black uppercase"
             type="submit"
             value="Update User"
           />

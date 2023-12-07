@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Header from "./Header";
 
 const NewUser = () => {
   const [gender, setGender] = useState("");
   const [status, setStatus] = useState("");
+  const navigate = useNavigate();
 
   const handleGenderChange = (e) => {
     setGender(e.target.value);
@@ -33,7 +36,14 @@ const NewUser = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          alert("User added successfully");
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "User added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/");
         }
       });
   };
